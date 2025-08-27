@@ -91,11 +91,10 @@ void applyFixesByModule(SceModule2* mod){
         if (CacheInit) CacheInit(0, 0, 0);
 
         // disable memory stick cache
-        extern int msstorCacheInit(char*);
         msstorCacheInit(NULL);
 
         // prevent Inferno Cache and MS Cache from being re-enabled
-        se_config->iso_cache = 0;
+        se_config->iso_cache_type = 0;
         se_config->msspeed = 0;
     }
 

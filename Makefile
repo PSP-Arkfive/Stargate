@@ -38,6 +38,6 @@ USE_KERNEL_LIBS=1
 
 LIBDIR = libs $(ARKSDK)/libs
 LDFLAGS =  -nostartfiles
-LIBS = -lpspsystemctrl_kernel -lpspsysc_user -lpspsemaphore
+LIBS = -lpspsystemctrl_kernel -lpspsysc_user -lpspsemaphore_660
 
 include $(PSPSDK)/lib/build.mak

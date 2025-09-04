@@ -12,9 +12,13 @@ C_OBJS = main.o \
 	src/chn_iso.o \
 
 OBJS = $(C_OBJS)
+
+PSPSDK = $(shell psp-config --pspsdk-path)
+ARKSDK ?= external
+
 all: $(TARGET).prx
 
-INCDIR = include external/include
+INCDIR = include $(ARKSDK)/include
 CFLAGS = -std=c99 -Os -G0 -Wall -fno-pic
 
 ifdef DEBUG
@@ -32,9 +36,8 @@ PRX_EXPORTS = exports.exp
 USE_KERNEL_LIBC=1
 USE_KERNEL_LIBS=1
 
-LIBDIR = libs external/libs
+LIBDIR = libs $(ARKSDK)/libs
 LDFLAGS =  -nostartfiles
 LIBS = -lpspsystemctrl_kernel -lpspsysc_user -lpspsemaphore
 
-PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak

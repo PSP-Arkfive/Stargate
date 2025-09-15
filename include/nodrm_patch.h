@@ -18,7 +18,7 @@
 #ifndef _NODRM_PATCH_H_
 #define _NODRM_PATCH_H_
 
-#include <module2.h>
+
 
 // Initialize NODRM Engine
 void nodrmInit(void);

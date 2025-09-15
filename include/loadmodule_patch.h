@@ -18,7 +18,7 @@
 #ifndef _LOADMODULE_PATCH_H_
 #define _LOADMODULE_PATCH_H_
 
-#include <module2.h>
+
 
 // Hook Table Entry
 struct HookMap

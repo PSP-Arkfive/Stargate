@@ -97,7 +97,7 @@ struct HookMap g_hookMap[] =
 };
 
 // Hook Load Module Functions
-void patchLoadModuleFuncs(SceModule2 * mod)
+void patchLoadModuleFuncs(SceModule * mod)
 {
     // Iterate Hooks
     unsigned int i = 0; for(; i < NELEMS(g_hookMap); ++i)

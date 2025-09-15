@@ -41,11 +41,11 @@ extern void patch_ioDevCtl();
 extern void patch_IsoDrivers();
 extern void patch_sceMesgLed();
 extern void applyFixesByGameId();
-extern void applyFixesByModule(SceModule2* mod);
-extern void hide_cfw_folder(SceModule2 * mod);
+extern void applyFixesByModule(SceModule* mod);
+extern void hide_cfw_folder(SceModule * mod);
 
 // Module Start Handler
-int stargateSyspatchModuleOnStart(SceModule2 * mod)
+int stargateSyspatchModuleOnStart(SceModule * mod)
 {
     static int booted = 0;
 
@@ -78,7 +78,7 @@ int (*prev_start)(int modid, SceSize argsize, void * argp, int * modstatus, SceK
 int stargateStartModuleHandler(int modid, SceSize argsize, void * argp, int * modstatus, SceKernelSMOption * opt)
 {
     // Fetch Module
-    SceModule2 * mod = (SceModule2 *)sceKernelFindModuleByUID(modid);
+    SceModule * mod = (SceModule *)sceKernelFindModuleByUID(modid);
     
     // Module not found
     if(mod == NULL) return -1;
@@ -113,7 +113,7 @@ int stargateStartModuleHandler(int modid, SceSize argsize, void * argp, int * mo
 static void patchLoadExec(void)
 {
     // Fix Load Execute CFW Detection
-    SceModule2* mod = (SceModule2*)sceKernelFindModuleByName("sceLoadExec");
+    SceModule* mod = (SceModule*)sceKernelFindModuleByName("sceLoadExec");
     for (u32 addr=mod->text_addr; ;addr+=4){
         if (_lw(addr) == 0x00250821){
             _sw(NOP, addr+4);

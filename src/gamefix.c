@@ -43,7 +43,7 @@ static int getParamFixed_ULJM05221(int param, int* value){
     return res;
 }
 
-static int wweModuleOnStart(SceModule2 * mod)
+static int wweModuleOnStart(SceModule * mod)
 {
     // Boot Complete Action not done yet
     if (strcmp(mod->modname, "mainPSP") == 0)
@@ -60,7 +60,7 @@ static int wweModuleOnStart(SceModule2 * mod)
 }
 
 
-void applyFixesByModule(SceModule2* mod){
+void applyFixesByModule(SceModule* mod){
 
     // fix black screen in Tekken 6
     if (strcmp(mod->modname, "tekken") == 0) {

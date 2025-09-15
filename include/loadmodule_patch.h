@@ -32,7 +32,7 @@ struct HookMap
 void getLoadModuleFuncs(void);
 
 // Patch sceUtility Load Module Functions
-void patchLoadModuleFuncs(SceModule2 * mod);
+void patchLoadModuleFuncs(SceModule * mod);
 
 #endif
 

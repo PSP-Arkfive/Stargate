@@ -45,7 +45,7 @@ extern void applyFixesByModule(SceModule* mod);
 extern void hide_cfw_folder(SceModule * mod);
 
 // Module Start Handler
-void stargateSyspatchModuleOnStart(SceModule * mod)
+int stargateSyspatchModuleOnStart(SceModule * mod)
 {
     static int booted = 0;
 
@@ -68,6 +68,8 @@ void stargateSyspatchModuleOnStart(SceModule * mod)
     
     // Patch LoadModule Function
     patchLoadModuleFuncs(mod);
+
+    return 0;
     
 }
 

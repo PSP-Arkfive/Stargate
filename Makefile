@@ -1,3 +1,5 @@
+PSPSDK = $(shell psp-config --pspsdk-path)
+
 TARGET = stargate
 
 C_OBJS = main.o \
@@ -13,12 +15,9 @@ C_OBJS = main.o \
 
 OBJS = $(C_OBJS)
 
-PSPSDK = $(shell psp-config --pspsdk-path)
-ARKSDK ?= ../ark-dev-sdk
-
 all: $(TARGET).prx
 
-INCDIR = include $(ARKSDK)/include
+INCDIR = include
 CFLAGS = -std=c99 -Os -G0 -Wall -fno-pic
 
 ifdef DEBUG
@@ -36,8 +35,8 @@ PRX_EXPORTS = exports.exp
 USE_KERNEL_LIBC=1
 USE_KERNEL_LIBS=1
 
-LIBDIR = libs $(ARKSDK)/libs
-LDFLAGS =  -nostartfiles
+LIBDIR =
+LDFLAGS = -nostartfiles
 LIBS = -lpspsystemctrl_kernel -lpspsysc_user -lpspsemaphore_660
 
 include $(PSPSDK)/lib/build.mak
